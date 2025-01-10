@@ -15,22 +15,27 @@ struct SignUpView: View {
     @State private var displayName: String = ""
     @State private var errorMessage: String = ""
     
+    @EnvironmentObject private var firebaseModel: FirebaseModel
+    
     private var isFormValid: Bool {
         !email.isEmptyOrWhiteSpace
         && !password.isEmptyOrWhiteSpace
         && !displayName.isEmptyOrWhiteSpace
     }
     
+    /*
     private func updateDisplayName(user: User) async{
         let request = user.createProfileChangeRequest()
         request.displayName = displayName
         try? await request.commitChanges()
     }
+     */
     
     private func signUp() async {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
-            await updateDisplayName(user: result.user)
+            try await firebaseModel.updateDisplayName(for: result.user, displayName: displayName)
+            //await updateDisplayName(user: result.user)
         } catch(let error) {
             print(error)
             errorMessage = error.localizedDescription
@@ -72,4 +77,5 @@ struct SignUpView: View {
 
 #Preview {
     SignUpView()
+        .environmentObject(FirebaseModel())
 }
