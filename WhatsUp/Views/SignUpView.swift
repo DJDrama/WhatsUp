@@ -21,9 +21,16 @@ struct SignUpView: View {
         && !displayName.isEmptyOrWhiteSpace
     }
     
+    private func updateDisplayName(user: User) async{
+        let request = user.createProfileChangeRequest()
+        request.displayName = displayName
+        try? await request.commitChanges()
+    }
+    
     private func signUp() async {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
+            await updateDisplayName(user: result.user)
         } catch(let error) {
             print(error)
             errorMessage = error.localizedDescription
@@ -53,10 +60,12 @@ struct SignUpView: View {
                 }.buttonStyle(.borderless)
                 Spacer()
             }
+            
             if !errorMessage.isEmpty{
                 Text(errorMessage)
                     .foregroundStyle(.red)
             }
+            
         }
     }
 }
