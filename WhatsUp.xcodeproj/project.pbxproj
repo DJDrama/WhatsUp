@@ -18,6 +18,7 @@
 		D2C0D10B2D3121650062736B /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0D10A2D3121650062736B /* SignUpView.swift */; };
 		D2C0D10E2D31221E0062736B /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0D10D2D31221E0062736B /* String+Extensions.swift */; };
 		D2C0D1112D3125DE0062736B /* FirebaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0D1102D3125DE0062736B /* FirebaseModel.swift */; };
+		D2C0D1132D3126EB0062736B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0D1122D3126EB0062736B /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		D2C0D10A2D3121650062736B /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		D2C0D10D2D31221E0062736B /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		D2C0D1102D3125DE0062736B /* FirebaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseModel.swift; sourceTree = "<group>"; };
+		D2C0D1122D3126EB0062736B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				D2C0D10A2D3121650062736B /* SignUpView.swift */,
+				D2C0D1122D3126EB0062736B /* LoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2C0D1132D3126EB0062736B /* LoginView.swift in Sources */,
 				D2C0D1112D3125DE0062736B /* FirebaseModel.swift in Sources */,
 				D2C0D10E2D31221E0062736B /* String+Extensions.swift in Sources */,
 				D2C0D0F52D311F1F0062736B /* ContentView.swift in Sources */,
