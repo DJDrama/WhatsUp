@@ -15,6 +15,8 @@
 		D2C0D1042D31201E0062736B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D2C0D1032D31201E0062736B /* FirebaseAuth */; };
 		D2C0D1062D31201E0062736B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D2C0D1052D31201E0062736B /* FirebaseFirestore */; };
 		D2C0D1082D31201E0062736B /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D2C0D1072D31201E0062736B /* FirebaseStorage */; };
+		D2C0D10B2D3121650062736B /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0D10A2D3121650062736B /* SignUpView.swift */; };
+		D2C0D10E2D31221E0062736B /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0D10D2D31221E0062736B /* String+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		D2C0D0F62D311F210062736B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2C0D0F92D311F210062736B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D2C0D1002D311F5C0062736B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D2C0D10A2D3121650062736B /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		D2C0D10D2D31221E0062736B /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 		D2C0D0F12D311F1F0062736B /* WhatsUp */ = {
 			isa = PBXGroup;
 			children = (
+				D2C0D10C2D3122130062736B /* Extensions */,
+				D2C0D1092D31215A0062736B /* Views */,
 				D2C0D1002D311F5C0062736B /* GoogleService-Info.plist */,
 				D2C0D0F22D311F1F0062736B /* WhatsUpApp.swift */,
 				D2C0D0F42D311F1F0062736B /* ContentView.swift */,
@@ -74,6 +80,22 @@
 				D2C0D0F92D311F210062736B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D2C0D1092D31215A0062736B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D2C0D10A2D3121650062736B /* SignUpView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D2C0D10C2D3122130062736B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D2C0D10D2D31221E0062736B /* String+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,7 +177,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2C0D10E2D31221E0062736B /* String+Extensions.swift in Sources */,
 				D2C0D0F52D311F1F0062736B /* ContentView.swift in Sources */,
+				D2C0D10B2D3121650062736B /* SignUpView.swift in Sources */,
 				D2C0D0F32D311F1F0062736B /* WhatsUpApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
