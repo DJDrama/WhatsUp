@@ -36,7 +36,8 @@ struct SignUpView: View {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             try await firebaseModel.updateDisplayName(for: result.user, displayName: displayName)
-            //await updateDisplayName(user: result.user)
+            // go to the Login screen
+            appState.routes.append(.login)
         } catch(let error) {
             print(error)
             errorMessage = error.localizedDescription

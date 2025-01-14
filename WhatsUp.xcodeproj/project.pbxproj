@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		D2ADEB552D362B7B005D62B6 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ADEB542D362B7B005D62B6 /* MainView.swift */; };
 		D2ADEB572D363901005D62B6 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ADEB562D363901005D62B6 /* AppState.swift */; };
+		D2ADEB592D363C63005D62B6 /* GroupListContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ADEB582D363C63005D62B6 /* GroupListContainerView.swift */; };
+		D2ADEB5C2D363D1B005D62B6 /* AddNewGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ADEB5B2D363D1B005D62B6 /* AddNewGroupView.swift */; };
 		D2C0D0F32D311F1F0062736B /* WhatsUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0D0F22D311F1F0062736B /* WhatsUpApp.swift */; };
 		D2C0D0F72D311F210062736B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2C0D0F62D311F210062736B /* Assets.xcassets */; };
 		D2C0D0FA2D311F210062736B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2C0D0F92D311F210062736B /* Preview Assets.xcassets */; };
@@ -25,6 +27,8 @@
 /* Begin PBXFileReference section */
 		D2ADEB542D362B7B005D62B6 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D2ADEB562D363901005D62B6 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		D2ADEB582D363C63005D62B6 /* GroupListContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListContainerView.swift; sourceTree = "<group>"; };
+		D2ADEB5B2D363D1B005D62B6 /* AddNewGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewGroupView.swift; sourceTree = "<group>"; };
 		D2C0D0EF2D311F1F0062736B /* WhatsUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2C0D0F22D311F1F0062736B /* WhatsUpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsUpApp.swift; sourceTree = "<group>"; };
 		D2C0D0F62D311F210062736B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -50,6 +54,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D2ADEB5A2D363D09005D62B6 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				D2ADEB582D363C63005D62B6 /* GroupListContainerView.swift */,
+				D2ADEB5B2D363D1B005D62B6 /* AddNewGroupView.swift */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
 		D2C0D0E62D311F1F0062736B = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +104,7 @@
 		D2C0D1092D31215A0062736B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D2ADEB5A2D363D09005D62B6 /* Group */,
 				D2C0D10A2D3121650062736B /* SignUpView.swift */,
 				D2C0D1122D3126EB0062736B /* LoginView.swift */,
 				D2ADEB542D362B7B005D62B6 /* MainView.swift */,
@@ -200,7 +214,9 @@
 				D2ADEB572D363901005D62B6 /* AppState.swift in Sources */,
 				D2C0D10E2D31221E0062736B /* String+Extensions.swift in Sources */,
 				D2C0D10B2D3121650062736B /* SignUpView.swift in Sources */,
+				D2ADEB592D363C63005D62B6 /* GroupListContainerView.swift in Sources */,
 				D2C0D0F32D311F1F0062736B /* WhatsUpApp.swift in Sources */,
+				D2ADEB5C2D363D1B005D62B6 /* AddNewGroupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
