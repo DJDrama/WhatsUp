@@ -22,14 +22,30 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct WhatsUpApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject private var appState = AppState()
+    @StateObject private var firebaseModel = FirebaseModel()
     
     var body: some Scene {
         WindowGroup {
-            if Auth.auth().currentUser != nil { // For Logged In User
-                MainView()
-            } else {
-                LoginView()
-            }
+            NavigationStack(path: $appState.routes){
+                ZStack {
+                    if Auth.auth().currentUser != nil { // For Logged In User
+                        MainView()
+                    } else {
+                        LoginView()
+                    }
+                }.navigationDestination(for: Route.self) { route in
+                    switch route {
+                    case .main:
+                        MainView()
+                    case .login:
+                        LoginView()
+                    case .signup:
+                        SignUpView()
+                    }
+                }
+            }.environmentObject(appState) // inject appState
+                .environmentObject(firebaseModel) // inject model
         }
     }
 }

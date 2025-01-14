@@ -16,6 +16,7 @@ struct SignUpView: View {
     @State private var errorMessage: String = ""
     
     @EnvironmentObject private var firebaseModel: FirebaseModel
+    @EnvironmentObject private var appState: AppState
     
     private var isFormValid: Bool {
         !email.isEmptyOrWhiteSpace
@@ -62,6 +63,7 @@ struct SignUpView: View {
                 
                 Button("Login") {
                     // take the user to login screen
+                    appState.routes.append(.login)
                 }.buttonStyle(.borderless)
                 Spacer()
             }
@@ -78,4 +80,6 @@ struct SignUpView: View {
 #Preview {
     SignUpView()
         .environmentObject(FirebaseModel())
+        .environmentObject(AppState())
+    
 }
