@@ -42,6 +42,9 @@ struct LoginView: View {
                         await login()
                     }
                 }.disabled(!isFormValid).buttonStyle(.borderless)
+                Button("Register") {
+                    
+                }.buttonStyle(.borderless)
                 Spacer()
             }
             

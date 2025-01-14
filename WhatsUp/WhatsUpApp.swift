@@ -7,15 +7,16 @@
 
 import SwiftUI
 import FirebaseCore
+import FirebaseAuth
 
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-  func application(_ application: UIApplication,
-                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-    FirebaseApp.configure()
-
-    return true
-  }
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        FirebaseApp.configure()
+        
+        return true
+    }
 }
 
 @main
@@ -24,7 +25,11 @@ struct WhatsUpApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if Auth.auth().currentUser != nil { // For Logged In User
+                MainView()
+            } else {
+                LoginView()
+            }
         }
     }
 }
