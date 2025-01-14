@@ -12,6 +12,8 @@
 		D2ADEB592D363C63005D62B6 /* GroupListContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ADEB582D363C63005D62B6 /* GroupListContainerView.swift */; };
 		D2ADEB5C2D363D1B005D62B6 /* AddNewGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ADEB5B2D363D1B005D62B6 /* AddNewGroupView.swift */; };
 		D2ADEB5E2D36418B005D62B6 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ADEB5D2D36418B005D62B6 /* Group.swift */; };
+		D2ADEB612D364757005D62B6 /* GroupListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ADEB602D364757005D62B6 /* GroupListView.swift */; };
+		D2ADEB632D3647B1005D62B6 /* GroupDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ADEB622D3647B1005D62B6 /* GroupDetailView.swift */; };
 		D2C0D0F32D311F1F0062736B /* WhatsUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0D0F22D311F1F0062736B /* WhatsUpApp.swift */; };
 		D2C0D0F72D311F210062736B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2C0D0F62D311F210062736B /* Assets.xcassets */; };
 		D2C0D0FA2D311F210062736B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2C0D0F92D311F210062736B /* Preview Assets.xcassets */; };
@@ -31,6 +33,9 @@
 		D2ADEB582D363C63005D62B6 /* GroupListContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListContainerView.swift; sourceTree = "<group>"; };
 		D2ADEB5B2D363D1B005D62B6 /* AddNewGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewGroupView.swift; sourceTree = "<group>"; };
 		D2ADEB5D2D36418B005D62B6 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		D2ADEB5F2D364529005D62B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D2ADEB602D364757005D62B6 /* GroupListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListView.swift; sourceTree = "<group>"; };
+		D2ADEB622D3647B1005D62B6 /* GroupDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailView.swift; sourceTree = "<group>"; };
 		D2C0D0EF2D311F1F0062736B /* WhatsUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2C0D0F22D311F1F0062736B /* WhatsUpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsUpApp.swift; sourceTree = "<group>"; };
 		D2C0D0F62D311F210062736B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -61,6 +66,8 @@
 			children = (
 				D2ADEB582D363C63005D62B6 /* GroupListContainerView.swift */,
 				D2ADEB5B2D363D1B005D62B6 /* AddNewGroupView.swift */,
+				D2ADEB602D364757005D62B6 /* GroupListView.swift */,
+				D2ADEB622D3647B1005D62B6 /* GroupDetailView.swift */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -84,6 +91,7 @@
 		D2C0D0F12D311F1F0062736B /* WhatsUp */ = {
 			isa = PBXGroup;
 			children = (
+				D2ADEB5F2D364529005D62B6 /* Info.plist */,
 				D2C0D10F2D3125D50062736B /* Models */,
 				D2C0D10C2D3122130062736B /* Extensions */,
 				D2C0D1092D31215A0062736B /* Views */,
@@ -212,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2C0D1132D3126EB0062736B /* LoginView.swift in Sources */,
+				D2ADEB612D364757005D62B6 /* GroupListView.swift in Sources */,
 				D2ADEB552D362B7B005D62B6 /* MainView.swift in Sources */,
 				D2C0D1112D3125DE0062736B /* FirebaseModel.swift in Sources */,
 				D2ADEB5E2D36418B005D62B6 /* Group.swift in Sources */,
@@ -221,6 +230,7 @@
 				D2ADEB592D363C63005D62B6 /* GroupListContainerView.swift in Sources */,
 				D2C0D0F32D311F1F0062736B /* WhatsUpApp.swift in Sources */,
 				D2ADEB5C2D363D1B005D62B6 /* AddNewGroupView.swift in Sources */,
+				D2ADEB632D3647B1005D62B6 /* GroupDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +367,7 @@
 				DEVELOPMENT_TEAM = A4VS9W3DA9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WhatsUp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -386,6 +397,7 @@
 				DEVELOPMENT_TEAM = A4VS9W3DA9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WhatsUp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

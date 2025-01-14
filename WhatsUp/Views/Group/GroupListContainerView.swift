@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct GroupListContainerView: View {
+    @EnvironmentObject private var firebaseModel: FirebaseModel
     @State private var isPresented: Bool = false
     var body: some View {
         VStack {
@@ -17,8 +18,16 @@ struct GroupListContainerView: View {
                     isPresented = true
                 }
             }
+            GroupListView(groups: firebaseModel.groups)
             Spacer()
         }.padding()
+            .task {
+                do{
+                    try await firebaseModel.populateGroups()
+                }catch{
+                    print(error)
+                }
+            }
             .sheet(isPresented: $isPresented, content: {
                 AddNewGroupView()
             })
@@ -27,4 +36,5 @@ struct GroupListContainerView: View {
 
 #Preview {
     GroupListContainerView()
+        .environmentObject(FirebaseModel())
 }
