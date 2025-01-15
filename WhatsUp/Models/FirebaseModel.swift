@@ -32,6 +32,21 @@ class FirebaseModel: ObservableObject {
         }
     }
     
+    func saveChatMessageToGroup(text: String, group: Group, completion: @escaping(Error?) -> Void){
+        let db = Firestore.firestore()
+        guard let groupDocumentId = group.documentId else { return }
+        db.collection("groups")
+            .document(groupDocumentId)
+            .collection("messages")
+            .addDocument(data: ["chatText": text]) { error in
+                if error != nil {
+                    completion(error)
+                }else {
+                    completion(nil)
+                }
+            }
+    }
+    
     func saveGroup(group: Group, completion: @escaping(Error?) -> Void) {
         let db = Firestore.firestore()
         var docRef: DocumentReference? = nil
