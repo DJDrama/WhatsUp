@@ -32,6 +32,15 @@ class FirebaseModel: ObservableObject {
         }
     }
     
+    func saveChageMessageToGroup(chatMessage: ChatMessage, group: Group) async throws {
+        let db = Firestore.firestore()
+        guard let groupDocumentId = group.documentId else { return }
+        let _ = try await db.collection("groups")
+            .document(groupDocumentId)
+            .collection("messages")
+            .addDocument(data: chatMessage.toDictionary())
+    }
+    /*
     func saveChatMessageToGroup(text: String, group: Group, completion: @escaping(Error?) -> Void){
         let db = Firestore.firestore()
         guard let groupDocumentId = group.documentId else { return }
@@ -46,6 +55,7 @@ class FirebaseModel: ObservableObject {
                 }
             }
     }
+     */
     
     func saveGroup(group: Group, completion: @escaping(Error?) -> Void) {
         let db = Firestore.firestore()
