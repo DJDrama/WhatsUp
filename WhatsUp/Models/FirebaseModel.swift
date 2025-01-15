@@ -13,12 +13,51 @@ import FirebaseFirestore
 @MainActor
 class FirebaseModel: ObservableObject {
     @Published var groups: [Group] = []
+    @Published var chatMessages: [ChatMessage] = []
+    
+    var firestoreListener: ListenerRegistration?
+    
+    func detachFirebaseListener() {
+        self.firestoreListener?.remove()
+    }
     
     func updateDisplayName(for user: User, displayName: String) async throws {
         let request = user.createProfileChangeRequest()
         request.displayName = displayName
         try await request.commitChanges()
     }
+    
+    func listenForChatMessages(in group: Group) {
+        let db = Firestore.firestore()
+        chatMessages.removeAll()
+        guard let documentId = group.documentId else { return }
+        
+        self.firestoreListener = db.collection("groups")
+            .document(documentId)
+            .collection("messages")
+            .order(by: "dateCreated", descending: false)
+            .addSnapshotListener({ [weak self] snapshot, error in
+                // will be fired when changed
+                guard let snapshot = snapshot else {
+                    print("Error fetching snapshots: \(error!.localizedDescription)")
+                    return
+                }
+                snapshot.documentChanges.forEach { diff in
+                    if diff.type == .added {
+                        let chatMessage = ChatMessage.fromSnapshot(snapshot: diff.document)
+                        if let chatMessage {
+                            let exists = self?.chatMessages.contains(where: { cm in
+                                cm.documentId == chatMessage.documentId
+                            })
+                            if !exists! {
+                                self?.chatMessages.append(chatMessage)
+                            }
+                        }
+                    }
+                }
+            })
+    }
+    
     
     func populateGroups() async throws {
         let db = Firestore.firestore()
@@ -40,21 +79,22 @@ class FirebaseModel: ObservableObject {
             .collection("messages")
             .addDocument(data: chatMessage.toDictionary())
     }
+    
     /*
-    func saveChatMessageToGroup(text: String, group: Group, completion: @escaping(Error?) -> Void){
-        let db = Firestore.firestore()
-        guard let groupDocumentId = group.documentId else { return }
-        db.collection("groups")
-            .document(groupDocumentId)
-            .collection("messages")
-            .addDocument(data: ["chatText": text]) { error in
-                if error != nil {
-                    completion(error)
-                }else {
-                    completion(nil)
-                }
-            }
-    }
+     func saveChatMessageToGroup(text: String, group: Group, completion: @escaping(Error?) -> Void){
+     let db = Firestore.firestore()
+     guard let groupDocumentId = group.documentId else { return }
+     db.collection("groups")
+     .document(groupDocumentId)
+     .collection("messages")
+     .addDocument(data: ["chatText": text]) { error in
+     if error != nil {
+     completion(error)
+     }else {
+     completion(nil)
+     }
+     }
+     }
      */
     
     func saveGroup(group: Group, completion: @escaping(Error?) -> Void) {
@@ -78,3 +118,5 @@ class FirebaseModel: ObservableObject {
             }
     }
 }
+
+
