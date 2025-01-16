@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D252EE742D38D2F6008CBFF8 /* ChatMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D252EE732D38D2F6008CBFF8 /* ChatMessageView.swift */; };
 		D2ADEB552D362B7B005D62B6 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ADEB542D362B7B005D62B6 /* MainView.swift */; };
 		D2ADEB572D363901005D62B6 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ADEB562D363901005D62B6 /* AppState.swift */; };
 		D2ADEB592D363C63005D62B6 /* GroupListContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ADEB582D363C63005D62B6 /* GroupListContainerView.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D252EE732D38D2F6008CBFF8 /* ChatMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageView.swift; sourceTree = "<group>"; };
 		D2ADEB542D362B7B005D62B6 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D2ADEB562D363901005D62B6 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		D2ADEB582D363C63005D62B6 /* GroupListContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListContainerView.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				D2C0D1122D3126EB0062736B /* LoginView.swift */,
 				D2ADEB542D362B7B005D62B6 /* MainView.swift */,
 				D2ADEB662D379AA2005D62B6 /* ChatMessageListView.swift */,
+				D252EE732D38D2F6008CBFF8 /* ChatMessageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D252EE742D38D2F6008CBFF8 /* ChatMessageView.swift in Sources */,
 				D2C0D1132D3126EB0062736B /* LoginView.swift in Sources */,
 				D2ADEB612D364757005D62B6 /* GroupListView.swift in Sources */,
 				D2ADEB652D3791F6005D62B6 /* ChatMessage.swift in Sources */,

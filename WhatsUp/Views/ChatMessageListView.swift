@@ -11,11 +11,17 @@ struct ChatMessageListView: View {
     let chatMessages: [ChatMessage]
     var body: some View {
         List(chatMessages) { chatMessage in
-            Text(chatMessage.text)
-        }
+            ChatMessageView(chatMessage: chatMessage, direction: .right, color: .blue)
+        }.listStyle(.plain)
     }
 }
 
 #Preview {
-    ChatMessageListView(chatMessages: [])
+    ChatMessageListView(chatMessages: [
+        ChatMessage(text: "Hello World", uid: "1", displayName: "DJ"),
+        ChatMessage(text: "Hello World", uid: "1", displayName: "DJ"),
+        ChatMessage(text: "Hello World", uid: "1", displayName: "DJ"),
+        ChatMessage(text: "Hello World", uid: "1", displayName: "DJ"),
+        ChatMessage(text: "Hello World", uid: "1", displayName: "DJ"),
+    ])
 }
