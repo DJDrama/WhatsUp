@@ -19,28 +19,38 @@ struct ChatMessageListView: View {
     }
     
     var body: some View {
-        List(chatMessages) { chatMessage in
+        ScrollView{
             VStack{
-                if isChatMessageFromCurrentUser(chatMessage) {
-                    HStack{
-                        Spacer()
-                        ChatMessageView(chatMessage: chatMessage, direction: .right, color: .blue)
-                    }
-                }else {
-                    HStack{
-                        ChatMessageView(chatMessage: chatMessage, direction: .left, color: .gray)
-                        Spacer()
-                    }
+                ForEach(chatMessages) { chatMessage in
+                    VStack{
+                        if isChatMessageFromCurrentUser(chatMessage) {
+                            HStack{
+                                Spacer()
+                                ChatMessageView(chatMessage: chatMessage, direction: .right, color: .blue)
+                            }
+                        }else {
+                            HStack{
+                                ChatMessageView(chatMessage: chatMessage, direction: .left, color: .gray)
+                                Spacer()
+                            }
+                        }
+                        Spacer().frame(height: 20)
+                            .id(chatMessage.id) // set id
+                    }.listRowSeparator(.hidden)
                 }
-                Spacer().frame(height: 20)
-            }.listRowSeparator(.hidden)
-        }.listStyle(.plain)
-            
+            }
+        }
+        .padding([.bottom], 60)
     }
 }
 
 #Preview {
     ChatMessageListView(chatMessages: [
+        ChatMessage(text: "Hello World", uid: "1", displayName: "DJ"),
+        ChatMessage(text: "Hello World", uid: "1", displayName: "DJ"),
+        ChatMessage(text: "Hello World", uid: "1", displayName: "DJ"),
+        ChatMessage(text: "Hello World", uid: "1", displayName: "DJ"),
+        ChatMessage(text: "Hello World", uid: "1", displayName: "DJ"),
         ChatMessage(text: "Hello World", uid: "1", displayName: "DJ"),
         ChatMessage(text: "Hello World", uid: "1", displayName: "DJ"),
         ChatMessage(text: "Hello World", uid: "1", displayName: "DJ"),

@@ -21,13 +21,24 @@ struct GroupDetailView: View {
 
     var body: some View {
         VStack {
-            ChatMessageListView(chatMessages: firebaseModel.chatMessages)
+            ScrollViewReader { proxy in
+                ChatMessageListView(chatMessages: firebaseModel.chatMessages)
+                    .onChange(of: firebaseModel.chatMessages) { oldValue, newValue in
+                        if !firebaseModel.chatMessages.isEmpty {
+                            let lastChatMessage = firebaseModel.chatMessages.last
+                            withAnimation {
+                                proxy.scrollTo(lastChatMessage!.id, anchor: .bottom)
+                            }
+                        }
+                    }
+            }
             Spacer()
             TextField("Enter chat message.", text: $chatText)
             Button("Send"){
                 Task{
                     do{
                         try await sendMessage()
+                        chatText = ""
                     }catch{
                         print(error.localizedDescription)
                     }
