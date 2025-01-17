@@ -54,6 +54,15 @@ struct SettingsView: View {
             
             ImagePicker(image: $settingConfig.selectedImage, sourceType: sourceType)
         })
+        .onChange(of: settingConfig.selectedImage, { oldValue, newValue in
+            // resize the image
+            guard let image = newValue,
+                  let resizedImage = image.resize(to: CGSize(width: 100, height: 100)),
+                  let imageData = resizedImage.pngData()
+            else { return }
+            
+            // upload the image to Firebase Storage to get the url
+        })
         .padding()
             .onAppear(perform: {
                 settingConfig.displayName = displayName
