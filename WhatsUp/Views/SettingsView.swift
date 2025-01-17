@@ -49,7 +49,12 @@ struct SettingsView: View {
             Button("Sign out") {
                 
             }
-        }.padding()
+        }
+        .sheet(item: $settingConfig.sourceType, content: {sourceType in
+            
+            ImagePicker(image: $settingConfig.selectedImage, sourceType: sourceType)
+        })
+        .padding()
             .onAppear(perform: {
                 settingConfig.displayName = displayName
             })

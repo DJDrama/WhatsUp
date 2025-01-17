@@ -13,7 +13,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     typealias UIViewControllerType = UIImagePickerController
     typealias Coordinator = ImagePickerCoordinator
     @Binding var image: UIImage?
-    let sourceType: UIImagePickerController.SourceType = .camera
+    var sourceType: UIImagePickerController.SourceType = .camera
     
     func makeCoordinator() -> ImagePicker.Coordinator {
         return ImagePickerCoordinator(self)
