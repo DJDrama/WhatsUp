@@ -30,62 +30,78 @@ struct SettingsView: View {
     }
     
     var body: some View {
-        VStack {
-            AsyncImage(url: currentPhotoURL){ image in
-                image.rounded()
-            } placeholder: {
-                Image(systemName: "person.crop.circle.fill")
-                    .rounded()
-            }.onTapGesture {
-                settingConfig.showPhotoOptions = true
-            }.confirmationDialog("Select", isPresented: $settingConfig.showPhotoOptions) {
-                Button("Camera"){
-                    settingConfig.sourceType = .camera
+        NavigationView {
+            VStack {
+                AsyncImage(url: currentPhotoURL){ image in
+                    image.rounded()
+                } placeholder: {
+                    Image(systemName: "person.crop.circle.fill")
+                        .rounded()
+                }.onTapGesture {
+                    settingConfig.showPhotoOptions = true
+                }.confirmationDialog("Select", isPresented: $settingConfig.showPhotoOptions) {
+                    Button("Camera"){
+                        settingConfig.sourceType = .camera
+                    }
+                    Button("Photo Library"){
+                        settingConfig.sourceType = .photoLibrary
+                    }
                 }
-                Button("Photo Library"){
-                    settingConfig.sourceType = .photoLibrary
-                }
-            }
-            
-            TextField(settingConfig.displayName, text: $settingConfig.displayName)
-                .textFieldStyle(.roundedBorder)
-                .focused($isEditing)
-                .textInputAutocapitalization(.never)
-            
-            Spacer()
-            Button("Sign out") {
                 
-            }
-        }
-        .sheet(item: $settingConfig.sourceType, content: {sourceType in
-            
-            ImagePicker(image: $settingConfig.selectedImage, sourceType: sourceType)
-        })
-        .onChange(of: settingConfig.selectedImage, { oldValue, newValue in
-            // resize the image
-            guard let image = newValue,
-                  let resizedImage = image.resize(to: CGSize(width: 100, height: 100)),
-                  let imageData = resizedImage.pngData()
-            else { return }
-            
-            // upload the image to Firebase Storage to get the url
-            Task{
-                guard let currentUser = Auth.auth().currentUser else { return }
-                let fileName = "\(currentUser.uid).png"
-                do{
-                    let url = try await Storage.storage().uploadData(for: fileName, data: imageData, bucket: .photos)
-                    try await firebaseModel.updatePhotoURL(for: currentUser, photoURL: url)
-                    currentPhotoURL = url
-                }catch {
-                    print(error.localizedDescription)
+                TextField(settingConfig.displayName, text: $settingConfig.displayName)
+                    .textFieldStyle(.roundedBorder)
+                    .focused($isEditing)
+                    .textInputAutocapitalization(.never)
+                
+                Spacer()
+                Button("Sign out") {
+                    
                 }
             }
-            
-        })
-        .padding()
-        .onAppear(perform: {
-            settingConfig.displayName = displayName
-        })
+            .sheet(item: $settingConfig.sourceType, content: {sourceType in
+                
+                ImagePicker(image: $settingConfig.selectedImage, sourceType: sourceType)
+            })
+            .onChange(of: settingConfig.selectedImage, { oldValue, newValue in
+                // resize the image
+                guard let image = newValue,
+                      let resizedImage = image.resize(to: CGSize(width: 100, height: 100)),
+                      let imageData = resizedImage.pngData()
+                else { return }
+                
+                // upload the image to Firebase Storage to get the url
+                Task{
+                    guard let currentUser = Auth.auth().currentUser else { return }
+                    let fileName = "\(currentUser.uid).png"
+                    do{
+                        let url = try await Storage.storage().uploadData(for: fileName, data: imageData, bucket: .photos)
+                        try await firebaseModel.updatePhotoURL(for: currentUser, photoURL: url)
+                        currentPhotoURL = url
+                    }catch {
+                        print(error.localizedDescription)
+                    }
+                }
+                
+            })
+            .padding()
+            .onAppear(perform: {
+                settingConfig.displayName = displayName
+            })
+            .toolbar(content: {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Save") {
+                        guard let currentUser = Auth.auth().currentUser else { return }
+                        Task{
+                            do{
+                                try await firebaseModel.updateDisplayName(for: currentUser, displayName: settingConfig.displayName)
+                            } catch {
+                                print(error.localizedDescription)
+                            }
+                        }
+                    }
+                }
+            })
+        }
     }
 }
 
