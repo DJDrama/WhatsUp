@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseAuth
+import FirebaseStorage
 
 struct SettingConfig{
     var showPhotoOptions: Bool = false
@@ -19,6 +20,9 @@ struct SettingsView: View {
     
     @State private var settingConfig = SettingConfig()
     @FocusState private var isEditing: Bool
+    @EnvironmentObject private var firebaseModel: FirebaseModel
+    
+    @State private var currentPhotoURL: URL? = Auth.auth().currentUser?.photoURL
     
     var displayName: String {
         guard let currentUser = Auth.auth().currentUser else { return "Guest" }
@@ -27,18 +31,21 @@ struct SettingsView: View {
     
     var body: some View {
         VStack {
-            Image(systemName: "person.crop.circle.fill")
-                .rounded()
-                .onTapGesture {
-                    settingConfig.showPhotoOptions = true
-                }.confirmationDialog("Select", isPresented: $settingConfig.showPhotoOptions) {
-                    Button("Camera"){
-                        settingConfig.sourceType = .camera
-                    }
-                    Button("Photo Library"){
-                        settingConfig.sourceType = .photoLibrary
-                    }
+            AsyncImage(url: currentPhotoURL){ image in
+                image.rounded()
+            } placeholder: {
+                Image(systemName: "person.crop.circle.fill")
+                    .rounded()
+            }.onTapGesture {
+                settingConfig.showPhotoOptions = true
+            }.confirmationDialog("Select", isPresented: $settingConfig.showPhotoOptions) {
+                Button("Camera"){
+                    settingConfig.sourceType = .camera
                 }
+                Button("Photo Library"){
+                    settingConfig.sourceType = .photoLibrary
+                }
+            }
             
             TextField(settingConfig.displayName, text: $settingConfig.displayName)
                 .textFieldStyle(.roundedBorder)
@@ -62,14 +69,27 @@ struct SettingsView: View {
             else { return }
             
             // upload the image to Firebase Storage to get the url
+            Task{
+                guard let currentUser = Auth.auth().currentUser else { return }
+                let fileName = "\(currentUser.uid).png"
+                do{
+                    let url = try await Storage.storage().uploadData(for: fileName, data: imageData, bucket: .photos)
+                    try await firebaseModel.updatePhotoURL(for: currentUser, photoURL: url)
+                    currentPhotoURL = url
+                }catch {
+                    print(error.localizedDescription)
+                }
+            }
+            
         })
         .padding()
-            .onAppear(perform: {
-                settingConfig.displayName = displayName
-            })
+        .onAppear(perform: {
+            settingConfig.displayName = displayName
+        })
     }
 }
 
 #Preview {
     SettingsView()
+        .environmentObject(FirebaseModel())
 }

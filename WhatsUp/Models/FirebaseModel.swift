@@ -58,6 +58,14 @@ class FirebaseModel: ObservableObject {
             })
     }
     
+    func updatePhotoURL(for user: User, photoURL: URL) async throws {
+        let request = user.createProfileChangeRequest()
+        request.photoURL = photoURL
+        try await request.commitChanges()
+        
+        // update UserInfo for all messages
+        
+    }
     
     func populateGroups() async throws {
         let db = Firestore.firestore()

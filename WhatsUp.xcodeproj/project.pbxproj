@@ -13,6 +13,7 @@
 		D289478C2D3A2A7F00F23AC6 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D289478B2D3A2A7F00F23AC6 /* ImagePicker.swift */; };
 		D289478E2D3A2D1C00F23AC6 /* UiImagePickerController.SourceType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D289478D2D3A2D1C00F23AC6 /* UiImagePickerController.SourceType+Extensions.swift */; };
 		D28947902D3A2ED700F23AC6 /* UiImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D289478F2D3A2ED700F23AC6 /* UiImage+Extensions.swift */; };
+		D28947922D3A30B900F23AC6 /* Storage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28947912D3A30B800F23AC6 /* Storage+Extensions.swift */; };
 		D2ADEB552D362B7B005D62B6 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ADEB542D362B7B005D62B6 /* MainView.swift */; };
 		D2ADEB572D363901005D62B6 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ADEB562D363901005D62B6 /* AppState.swift */; };
 		D2ADEB592D363C63005D62B6 /* GroupListContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ADEB582D363C63005D62B6 /* GroupListContainerView.swift */; };
@@ -42,6 +43,7 @@
 		D289478B2D3A2A7F00F23AC6 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		D289478D2D3A2D1C00F23AC6 /* UiImagePickerController.SourceType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiImagePickerController.SourceType+Extensions.swift"; sourceTree = "<group>"; };
 		D289478F2D3A2ED700F23AC6 /* UiImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiImage+Extensions.swift"; sourceTree = "<group>"; };
+		D28947912D3A30B800F23AC6 /* Storage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storage+Extensions.swift"; sourceTree = "<group>"; };
 		D2ADEB542D362B7B005D62B6 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D2ADEB562D363901005D62B6 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		D2ADEB582D363C63005D62B6 /* GroupListContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListContainerView.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				D28947892D3A286E00F23AC6 /* Image+Extensions.swift */,
 				D289478D2D3A2D1C00F23AC6 /* UiImagePickerController.SourceType+Extensions.swift */,
 				D289478F2D3A2ED700F23AC6 /* UiImage+Extensions.swift */,
+				D28947912D3A30B800F23AC6 /* Storage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				D2ADEB5C2D363D1B005D62B6 /* AddNewGroupView.swift in Sources */,
 				D289478A2D3A286E00F23AC6 /* Image+Extensions.swift in Sources */,
 				D2ADEB632D3647B1005D62B6 /* GroupDetailView.swift in Sources */,
+				D28947922D3A30B900F23AC6 /* Storage+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

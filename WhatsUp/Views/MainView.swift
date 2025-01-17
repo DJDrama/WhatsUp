@@ -15,7 +15,7 @@ struct MainView: View {
                     Label("Chats", systemImage: "message.fill")
                 }
             
-            Text("Settings")
+            SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }
