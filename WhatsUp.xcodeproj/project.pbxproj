@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D252EE742D38D2F6008CBFF8 /* ChatMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D252EE732D38D2F6008CBFF8 /* ChatMessageView.swift */; };
+		D252EE762D38D91B008CBFF8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D252EE752D38D91B008CBFF8 /* SettingsView.swift */; };
+		D289478A2D3A286E00F23AC6 /* Image+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28947892D3A286E00F23AC6 /* Image+Extensions.swift */; };
 		D2ADEB552D362B7B005D62B6 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ADEB542D362B7B005D62B6 /* MainView.swift */; };
 		D2ADEB572D363901005D62B6 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ADEB562D363901005D62B6 /* AppState.swift */; };
 		D2ADEB592D363C63005D62B6 /* GroupListContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ADEB582D363C63005D62B6 /* GroupListContainerView.swift */; };
@@ -32,6 +34,8 @@
 
 /* Begin PBXFileReference section */
 		D252EE732D38D2F6008CBFF8 /* ChatMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageView.swift; sourceTree = "<group>"; };
+		D252EE752D38D91B008CBFF8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		D28947892D3A286E00F23AC6 /* Image+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extensions.swift"; sourceTree = "<group>"; };
 		D2ADEB542D362B7B005D62B6 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D2ADEB562D363901005D62B6 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		D2ADEB582D363C63005D62B6 /* GroupListContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListContainerView.swift; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 				D2ADEB542D362B7B005D62B6 /* MainView.swift */,
 				D2ADEB662D379AA2005D62B6 /* ChatMessageListView.swift */,
 				D252EE732D38D2F6008CBFF8 /* ChatMessageView.swift */,
+				D252EE752D38D91B008CBFF8 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -134,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				D2C0D10D2D31221E0062736B /* String+Extensions.swift */,
+				D28947892D3A286E00F23AC6 /* Image+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -237,11 +243,13 @@
 				D2C0D1112D3125DE0062736B /* FirebaseModel.swift in Sources */,
 				D2ADEB5E2D36418B005D62B6 /* Group.swift in Sources */,
 				D2ADEB572D363901005D62B6 /* AppState.swift in Sources */,
+				D252EE762D38D91B008CBFF8 /* SettingsView.swift in Sources */,
 				D2C0D10E2D31221E0062736B /* String+Extensions.swift in Sources */,
 				D2C0D10B2D3121650062736B /* SignUpView.swift in Sources */,
 				D2ADEB592D363C63005D62B6 /* GroupListContainerView.swift in Sources */,
 				D2C0D0F32D311F1F0062736B /* WhatsUpApp.swift in Sources */,
 				D2ADEB5C2D363D1B005D62B6 /* AddNewGroupView.swift in Sources */,
+				D289478A2D3A286E00F23AC6 /* Image+Extensions.swift in Sources */,
 				D2ADEB632D3647B1005D62B6 /* GroupDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
