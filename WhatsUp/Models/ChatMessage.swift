@@ -15,11 +15,15 @@ struct ChatMessage: Codable, Identifiable, Equatable {
     let uid: String
     var dateCreated: Date = Date()
     let displayName: String
+    var profilePhotoURL: String = ""
     
     var id: String{
         documentId ?? UUID().uuidString
     }
-    
+ 
+    var displayProfilePhotoURL: URL? {
+        profilePhotoURL.isEmpty ? nil: URL(string: profilePhotoURL)
+    }
 }
 
 
@@ -30,6 +34,7 @@ extension ChatMessage {
             "uid": uid,
             "dateCreated": dateCreated,
             "displayName": displayName,
+            "profilePhotoURL": profilePhotoURL
         ]
     }
     
@@ -38,7 +43,8 @@ extension ChatMessage {
         guard let text = dictionary["text"] as? String,
               let uid = dictionary["uid"] as? String,
               let dateCreated = (dictionary["dateCreated"] as? Timestamp)?.dateValue(),
-              let displayName = dictionary["displayName"] as? String
+              let displayName = dictionary["displayName"] as? String,
+              let profilePhotoURL = dictionary["profilePhotoURL"] as? String
         else { return nil }
         
         return ChatMessage(
@@ -46,7 +52,8 @@ extension ChatMessage {
             text: text,
             uid: uid,
             dateCreated: dateCreated,
-            displayName: displayName
+            displayName: displayName,
+            profilePhotoURL: profilePhotoURL
         )
     }
 }

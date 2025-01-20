@@ -15,7 +15,7 @@ struct GroupDetailView: View {
     
     private func sendMessage() async throws {
         guard let currentUser = Auth.auth().currentUser else { return }
-        let chatMessage = ChatMessage(text: chatText, uid: currentUser.uid, displayName: currentUser.displayName ?? "Guest")
+        let chatMessage = ChatMessage(text: chatText, uid: currentUser.uid, displayName: currentUser.displayName ?? "Guest", profilePhotoURL: currentUser.photoURL == nil ? "" : currentUser.photoURL!.absoluteString)
         try await firebaseModel.saveChageMessageToGroup(chatMessage: chatMessage, group: group)
     }
 
