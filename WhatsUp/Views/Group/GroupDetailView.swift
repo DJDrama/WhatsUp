@@ -12,14 +12,13 @@ import FirebaseAuth
 struct GroupDetailView: View {
     let group: Group
     @EnvironmentObject private var firebaseModel: FirebaseModel
-    @State private var chatText = ""
     @State private var groupDetailConfig = GroupDetailConfig()
     @FocusState private var isChatTextFieldFocused: Bool
     
     
     private func sendMessage() async throws {
         guard let currentUser = Auth.auth().currentUser else { return }
-        var chatMessage = ChatMessage(text: chatText, uid: currentUser.uid, displayName: currentUser.displayName ?? "Guest", profilePhotoURL: currentUser.photoURL == nil ? "" : currentUser.photoURL!.absoluteString)
+        var chatMessage = ChatMessage(text: groupDetailConfig.chatText, uid: currentUser.uid, displayName: currentUser.displayName ?? "Guest", profilePhotoURL: currentUser.photoURL == nil ? "" : currentUser.photoURL!.absoluteString)
         
         if let selectedImage = groupDetailConfig.selectedImage {
             // resize the image
@@ -31,7 +30,10 @@ struct GroupDetailView: View {
         }
         
         try await firebaseModel.saveChageMessageToGroup(chatMessage: chatMessage, group: group)
-        groupDetailConfig.selectedImage = nil
+    }
+    
+    private func clearFields() {
+        groupDetailConfig.clearForm()
     }
     
     var body: some View {
@@ -77,6 +79,7 @@ struct GroupDetailView: View {
                 Task {
                     do{
                         try await sendMessage()
+                        clearFields()
                     } catch{
                         print(error.localizedDescription)
                     }
