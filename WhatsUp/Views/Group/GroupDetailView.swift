@@ -22,7 +22,7 @@ struct GroupDetailView: View {
         var chatMessage = ChatMessage(text: chatText, uid: currentUser.uid, displayName: currentUser.displayName ?? "Guest", profilePhotoURL: currentUser.photoURL == nil ? "" : currentUser.photoURL!.absoluteString)
         
         if let selectedImage = groupDetailConfig.selectedImage {
-                // resize the image
+            // resize the image
             guard let resizedImage = selectedImage.resize(to: CGSize(width: 600, height: 600)),
                   let imageData = resizedImage.pngData()
             else { return }
@@ -31,8 +31,9 @@ struct GroupDetailView: View {
         }
         
         try await firebaseModel.saveChageMessageToGroup(chatMessage: chatMessage, group: group)
+        groupDetailConfig.selectedImage = nil
     }
-
+    
     var body: some View {
         VStack {
             ScrollViewReader { proxy in
@@ -61,24 +62,33 @@ struct GroupDetailView: View {
         .sheet(item: $groupDetailConfig.sourceType, content: { sourceType in
             ImagePicker(image: $groupDetailConfig.selectedImage, sourceType: sourceType)
         })
-            .overlay(alignment: .bottom, content: {
-                ChatMessageInputView(groupDetailConfig: $groupDetailConfig, isChatTextFieldFocused: _isChatTextFieldFocused) {
-                    // send message
-                    Task {
-                        do{
-                            try await sendMessage()
-                        } catch{
-                            print(error.localizedDescription)
-                        }
+        .overlay(alignment: .center, content: {
+            if let selectedImage = groupDetailConfig.selectedImage {
+                PreviewImageView(selectedImage: selectedImage) {
+                    withAnimation {
+                        groupDetailConfig.selectedImage = nil
                     }
-                }.padding()
-            })
-            .onAppear {
-                firebaseModel.listenForChatMessages(in: group)
+                }
             }
-            .onDisappear(perform: {
-                firebaseModel.detachFirebaseListener()
-            })
+        })
+        .overlay(alignment: .bottom, content: {
+            ChatMessageInputView(groupDetailConfig: $groupDetailConfig, isChatTextFieldFocused: _isChatTextFieldFocused) {
+                // send message
+                Task {
+                    do{
+                        try await sendMessage()
+                    } catch{
+                        print(error.localizedDescription)
+                    }
+                }
+            }.padding()}
+        )
+        .onAppear {
+            firebaseModel.listenForChatMessages(in: group)
+        }
+        .onDisappear(perform: {
+            firebaseModel.detachFirebaseListener()
+        })
     }
 }
 
