@@ -12,6 +12,8 @@ struct GroupDetailView: View {
     let group: Group
     @EnvironmentObject private var firebaseModel: FirebaseModel
     @State private var chatText = ""
+    @State private var groupDetailConfig = GroupDetailConfig()
+    @FocusState private var isChatTextFieldFocused: Bool
     
     private func sendMessage() async throws {
         guard let currentUser = Auth.auth().currentUser else { return }
@@ -33,18 +35,21 @@ struct GroupDetailView: View {
                     }
             }
             Spacer()
-            TextField("Enter chat message.", text: $chatText)
-            Button("Send"){
-                Task{
-                    do{
-                        try await sendMessage()
-                        chatText = ""
-                    }catch{
-                        print(error.localizedDescription)
+        }
+        .frame(maxWidth: .infinity)
+        .padding()
+            .overlay(alignment: .bottom, content: {
+                ChatMessageInputView(groupDetailConfig: $groupDetailConfig, isChatTextFieldFocused: _isChatTextFieldFocused) {
+                    // send message
+                    Task {
+                        do{
+                            try await sendMessage()
+                        }catch{
+                            print(error.localizedDescription)
+                        }
                     }
-                }
-            }
-        }.padding()
+                }.padding()
+            })
             .onAppear {
                 firebaseModel.listenForChatMessages(in: group)
             }

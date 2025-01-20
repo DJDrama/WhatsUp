@@ -14,6 +14,8 @@
 		D289478E2D3A2D1C00F23AC6 /* UiImagePickerController.SourceType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D289478D2D3A2D1C00F23AC6 /* UiImagePickerController.SourceType+Extensions.swift */; };
 		D28947902D3A2ED700F23AC6 /* UiImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D289478F2D3A2ED700F23AC6 /* UiImage+Extensions.swift */; };
 		D28947922D3A30B900F23AC6 /* Storage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28947912D3A30B800F23AC6 /* Storage+Extensions.swift */; };
+		D28947942D3DF2A000F23AC6 /* ChatMessageInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28947932D3DF29F00F23AC6 /* ChatMessageInputView.swift */; };
+		D28947962D3DF2D500F23AC6 /* GroupDetailConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28947952D3DF2D500F23AC6 /* GroupDetailConfig.swift */; };
 		D2ADEB552D362B7B005D62B6 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ADEB542D362B7B005D62B6 /* MainView.swift */; };
 		D2ADEB572D363901005D62B6 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ADEB562D363901005D62B6 /* AppState.swift */; };
 		D2ADEB592D363C63005D62B6 /* GroupListContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ADEB582D363C63005D62B6 /* GroupListContainerView.swift */; };
@@ -44,6 +46,8 @@
 		D289478D2D3A2D1C00F23AC6 /* UiImagePickerController.SourceType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiImagePickerController.SourceType+Extensions.swift"; sourceTree = "<group>"; };
 		D289478F2D3A2ED700F23AC6 /* UiImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiImage+Extensions.swift"; sourceTree = "<group>"; };
 		D28947912D3A30B800F23AC6 /* Storage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storage+Extensions.swift"; sourceTree = "<group>"; };
+		D28947932D3DF29F00F23AC6 /* ChatMessageInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageInputView.swift; sourceTree = "<group>"; };
+		D28947952D3DF2D500F23AC6 /* GroupDetailConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailConfig.swift; sourceTree = "<group>"; };
 		D2ADEB542D362B7B005D62B6 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D2ADEB562D363901005D62B6 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		D2ADEB582D363C63005D62B6 /* GroupListContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListContainerView.swift; sourceTree = "<group>"; };
@@ -140,6 +144,8 @@
 				D252EE732D38D2F6008CBFF8 /* ChatMessageView.swift */,
 				D252EE752D38D91B008CBFF8 /* SettingsView.swift */,
 				D289478B2D3A2A7F00F23AC6 /* ImagePicker.swift */,
+				D28947932D3DF29F00F23AC6 /* ChatMessageInputView.swift */,
+				D28947952D3DF2D500F23AC6 /* GroupDetailConfig.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -247,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D252EE742D38D2F6008CBFF8 /* ChatMessageView.swift in Sources */,
+				D28947942D3DF2A000F23AC6 /* ChatMessageInputView.swift in Sources */,
 				D2C0D1132D3126EB0062736B /* LoginView.swift in Sources */,
 				D2ADEB612D364757005D62B6 /* GroupListView.swift in Sources */,
 				D289478C2D3A2A7F00F23AC6 /* ImagePicker.swift in Sources */,
@@ -261,6 +268,7 @@
 				D252EE762D38D91B008CBFF8 /* SettingsView.swift in Sources */,
 				D2C0D10E2D31221E0062736B /* String+Extensions.swift in Sources */,
 				D2C0D10B2D3121650062736B /* SignUpView.swift in Sources */,
+				D28947962D3DF2D500F23AC6 /* GroupDetailConfig.swift in Sources */,
 				D2ADEB592D363C63005D62B6 /* GroupListContainerView.swift in Sources */,
 				D2C0D0F32D311F1F0062736B /* WhatsUpApp.swift in Sources */,
 				D2ADEB5C2D363D1B005D62B6 /* AddNewGroupView.swift in Sources */,
