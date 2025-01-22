@@ -25,4 +25,5 @@ enum Route: Hashable {
 class AppState: ObservableObject {
     @Published var routes: [Route] = []
     @Published var loadingState: LoadingState = .idle
+    @Published var errorWrapper: ErrorWrapper? // optional - there might be no error~!
 }

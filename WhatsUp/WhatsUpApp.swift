@@ -52,8 +52,11 @@ struct WhatsUpApp: App {
                     LoadingView(message: message)
                 }
             })
+            .sheet(item: $appState.errorWrapper, content: { error in
+                ErrorView(errorWrapper: error)
+            })
             .environmentObject(appState) // inject appState
-                .environmentObject(firebaseModel) // inject model
+            .environmentObject(firebaseModel) // inject model
         }
     }
 }

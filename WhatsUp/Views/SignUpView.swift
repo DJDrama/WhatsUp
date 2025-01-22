@@ -13,7 +13,6 @@ struct SignUpView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var displayName: String = ""
-    @State private var errorMessage: String = ""
     
     @EnvironmentObject private var firebaseModel: FirebaseModel
     @EnvironmentObject private var appState: AppState
@@ -40,7 +39,7 @@ struct SignUpView: View {
             appState.routes.append(.login)
         } catch(let error) {
             print(error)
-            errorMessage = error.localizedDescription
+            appState.errorWrapper = ErrorWrapper(error: error)
         }
     }
     
@@ -68,12 +67,6 @@ struct SignUpView: View {
                 }.buttonStyle(.borderless)
                 Spacer()
             }
-            
-            if !errorMessage.isEmpty{
-                Text(errorMessage)
-                    .foregroundStyle(.red)
-            }
-            
         }
     }
 }

@@ -21,6 +21,7 @@ struct SettingsView: View {
     @State private var settingConfig = SettingConfig()
     @FocusState private var isEditing: Bool
     @EnvironmentObject private var firebaseModel: FirebaseModel
+    @EnvironmentObject private var appState: AppState
     
     @State private var currentPhotoURL: URL? = Auth.auth().currentUser?.photoURL
     
@@ -55,7 +56,14 @@ struct SettingsView: View {
                 
                 Spacer()
                 Button("Sign out") {
-                    
+                    do{
+                        try Auth.auth().signOut()
+                        appState.routes.append(.login)
+                    }catch {
+                        // can use errorwrapper
+                        print(error.localizedDescription)
+                        
+                    }
                 }
             }
             .sheet(item: $settingConfig.sourceType, content: {sourceType in
@@ -108,4 +116,5 @@ struct SettingsView: View {
 #Preview {
     SettingsView()
         .environmentObject(FirebaseModel())
+        .environmentObject(AppState())
 }
