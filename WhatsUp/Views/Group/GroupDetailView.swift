@@ -12,6 +12,7 @@ import FirebaseAuth
 struct GroupDetailView: View {
     let group: Group
     @EnvironmentObject private var firebaseModel: FirebaseModel
+    @EnvironmentObject private var appState: AppState
     @State private var groupDetailConfig = GroupDetailConfig()
     @FocusState private var isChatTextFieldFocused: Bool
     
@@ -34,6 +35,7 @@ struct GroupDetailView: View {
     
     private func clearFields() {
         groupDetailConfig.clearForm()
+        appState.loadingState = .idle
     }
     
     var body: some View {
@@ -78,10 +80,12 @@ struct GroupDetailView: View {
                 // send message
                 Task {
                     do{
+                        appState.loadingState = .loading("Sending...")
                         try await sendMessage()
                         clearFields()
                     } catch{
                         print(error.localizedDescription)
+                        appState.loadingState = .idle
                     }
                 }
             }.padding()}
@@ -98,4 +102,5 @@ struct GroupDetailView: View {
 #Preview {
     GroupDetailView(group: Group(subject: "Hello"))
         .environmentObject(FirebaseModel())
+        .environmentObject(AppState())
 }

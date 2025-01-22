@@ -44,7 +44,15 @@ struct WhatsUpApp: App {
                         SignUpView()
                     }
                 }
-            }.environmentObject(appState) // inject appState
+            }
+            .overlay(alignment: .top, content: {
+                switch appState.loadingState {
+                case .idle: EmptyView()
+                case .loading(let message):
+                    LoadingView(message: message)
+                }
+            })
+            .environmentObject(appState) // inject appState
                 .environmentObject(firebaseModel) // inject model
         }
     }
