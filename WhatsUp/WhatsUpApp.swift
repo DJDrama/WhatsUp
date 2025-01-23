@@ -29,10 +29,12 @@ struct WhatsUpApp: App {
         WindowGroup {
             NavigationStack(path: $appState.routes){
                 ZStack {
-                    if Auth.auth().currentUser != nil { // For Logged In User
-                        MainView()
-                    } else {
-                        LoginView()
+                    if appState.routes.isEmpty { // Key Point
+                        if Auth.auth().currentUser != nil { // For Logged In User
+                            MainView()
+                        } else {
+                            LoginView()
+                        }
                     }
                 }.navigationDestination(for: Route.self) { route in
                     switch route {

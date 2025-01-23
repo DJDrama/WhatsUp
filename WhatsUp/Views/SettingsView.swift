@@ -58,7 +58,7 @@ struct SettingsView: View {
                 Button("Sign out") {
                     do{
                         try Auth.auth().signOut()
-                        appState.routes.append(.login)
+                        appState.routes.removeAll()
                     }catch {
                         // can use errorwrapper
                         print(error.localizedDescription)
